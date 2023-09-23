@@ -9,12 +9,16 @@ import {MatIconModule} from "@angular/material/icon";
 import { PositionsComponent } from './positions/positions.component';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule, RouterOutlet} from "@angular/router";
+import { TechniquesComponent } from './techniques/techniques.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PositionsComponent
+    PositionsComponent,
+    TechniquesComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
