@@ -1,2 +1,9 @@
-<p>positions works!</p>
+<div class="grid-container">
+  <mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let image of images">
+      <img [ngSrc]="image.src" alt="Image" fill=""/>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
 

@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule, RouterOutlet} from "@angular/router";
 import { TechniquesComponent } from './techniques/techniques.component';
 import { AccountComponent } from './account/account.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {NgOptimizedImage} from "@angular/common";
+import {MatListModule} from "@angular/material/list";
+import { SourcesComponent } from './sources/sources.component';
 
 
 @NgModule({
@@ -18,7 +22,8 @@ import { AccountComponent } from './account/account.component';
     AppComponent,
     PositionsComponent,
     TechniquesComponent,
-    AccountComponent
+    AccountComponent,
+    SourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,10 @@ import { AccountComponent } from './account/account.component';
     MatIconModule,
     AppRoutingModule,
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    MatGridListModule,
+    NgOptimizedImage,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,12 @@
+mat-grid-tile {
+  background: darkcyan;
+}
+
+.grid-container {
+  /*todo: adjust it*/
+  display: grid;
+  height: 80vh; /* 100% of the viewport height */
+  width: 80vw; /* 100% of the viewport width */
+  grid-template-columns: 2fr 2fr 2fr; /* Example grid layout */
+  grid-gap: 10px; /* Adjust this as needed */
+}
