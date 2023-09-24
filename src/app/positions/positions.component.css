@@ -3,10 +3,16 @@ mat-grid-tile {
 }
 
 .grid-container {
-  /*todo: adjust it*/
   display: grid;
-  height: 80vh; /* 100% of the viewport height */
-  width: 80vw; /* 100% of the viewport width */
-  grid-template-columns: 2fr 2fr 2fr; /* Example grid layout */
-  grid-gap: 10px; /* Adjust this as needed */
+  background: aqua;
+  width: 90vw;
+  grid-gap: 25px;
+  padding: 20px;
+  margin: auto;
+}
+
+.bjj-position-img {
+  max-height: 500px;
+  max-width: 500px;
+  margin: auto;
 }
