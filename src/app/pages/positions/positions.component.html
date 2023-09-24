@@ -1,7 +1,9 @@
 <div class="grid-container">
   <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let image of images">
-      <img class="bjj-position-img" [ngSrc]="image.src" alt="Image" fill=""/>
+      <a [href]="image.link" target="_blank">
+        <img class="bjj-position-img" [ngSrc]="image.src" alt="Image" fill=""/>
+      </a>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
