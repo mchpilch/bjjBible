@@ -4,7 +4,7 @@ import {PositionsComponent} from "./pages/positions/positions.component";
 import {TechniquesComponent} from "./pages/techniques/techniques.component";
 import {AccountComponent} from "./pages/account/account.component";
 import {SourcesComponent} from "./pages/sources/sources.component";
-import {PositionDetailsComponent} from "./pages/position-details/position-details.component";
+import {PositionDetailsComponent} from "./pages/positionDetails/position-details.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/positions', pathMatch: 'full'},

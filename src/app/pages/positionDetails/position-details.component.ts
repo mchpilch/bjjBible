@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {PositionService} from "../../services/position/position.service";
 
 @Component({
   selector: 'app-position-details',
@@ -9,7 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 export class PositionDetailsComponent {
   position: string = '';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private positionService: PositionService
+  ) {
+  }
 
   ngOnInit(): void {
     const positionParam = this.route.snapshot.queryParamMap.get('position');
@@ -19,6 +24,8 @@ export class PositionDetailsComponent {
     }
 
     console.log("Position:", this.position);
+    console.log("Position ser:", this.positionService.getPositions().subscribe(x =>
+    console.log(x)));
   }
 }
 
