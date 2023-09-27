@@ -2,10 +2,30 @@
   white-space: pre-line;
 }
 
-.image-container {
+.card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
-  width: 50vw;
+  min-height: 100vh; /* Make sure the container takes up the full viewport height */
+}
+
+.custom-card {
+  width: 80%;
+  max-width: 800px; /* Adjust the maximum width as needed */
+  background: rebeccapurple;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-card-image {
+  max-width: 500px; /* Set a maximum width for the card image */
+  width: 100%; /* Ensure the image scales within the card */
+}
+
+/*https://www.colorhexa.com/8c53c6*/
+.position-btn{
+  background: #8c53c6;
+  color: #e7e6f0;
+  margin-right: 5px;
+  margin-left: 5px;
 }

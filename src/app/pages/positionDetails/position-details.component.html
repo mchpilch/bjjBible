@@ -1,5 +1,15 @@
-<!--<p>position-details works!</p>-->
-<!--<p class="line-breaks">{{ positionAsString() }}</p>-->
-<div class="image-container">
-  <img class="bjj-position-img" [ngSrc]="basicPosition.image" alt="Image of {{basicPosition.title}}"/>
+<div class="card-container">
+  <mat-card class="custom-card">
+    <mat-card-title>{{basicPosition.title.toUpperCase()}}</mat-card-title>
+    <img mat-card-image [ngSrc]="basicPosition.image" alt="Image of {{basicPosition.title}}" class="custom-card-image">
+    <mat-card-content>
+      {{basicPosition.description}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="position-btn" mat-button>LIKE</button>
+      <button class="position-btn" mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
+
+<p class="line-breaks">{{positionAsString() }}</p>

@@ -20,6 +20,7 @@ import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 
 import {MockDataService} from './services/mockDb/mock-data.service';
 import {HttpClientModule} from "@angular/common/http";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {HttpClientModule} from "@angular/common/http";
     NgOptimizedImage,
     MatListModule,
     InMemoryWebApiModule.forRoot(MockDataService),
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
 
   ],
   providers: [],
