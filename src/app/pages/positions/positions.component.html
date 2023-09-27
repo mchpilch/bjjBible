@@ -1,13 +1,11 @@
 <div class="grid-container">
   <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let image of images">
-      <img class="bjj-position-img" (click)="navigateToPositionDetails(image.name)" [ngSrc]="image.src" alt="Image of {{image.name}}"
+      <img class="bjj-position-img" (click)="navigateToPositionDetails(image.name)" [ngSrc]="image.src"
+           alt="Image of {{image.name}}"
            fill=""/>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
-<div style="background-color: white">
-  temp-help-div
 </div>
 
 

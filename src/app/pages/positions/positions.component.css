@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  background: aqua;
+  /*background: aqua;*/
   width: 90vw;
   grid-gap: 25px;
   padding: 20px;
@@ -8,7 +8,7 @@
 }
 
 mat-grid-tile {
-  background: darkcyan;
+  /*background: darkcyan;*/
 }
 
 .bjj-position-img {
