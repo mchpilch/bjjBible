@@ -9,9 +9,16 @@ import {BasicPosition} from "../../models/basic-position";
   styleUrls: ['./position-details.component.css']
 })
 export class PositionDetailsComponent {
-  position: string = '';
+
+  basicPosition: BasicPosition = {
+    id: 100,
+    title: 'xxx',
+    description: 'xxx',
+    image: 'xxx',
+  };
 
   private positions: BasicPosition[] | undefined;
+
   constructor(
     private route: ActivatedRoute,
     private positionService: PositionService
@@ -21,27 +28,37 @@ export class PositionDetailsComponent {
 
   ngOnInit(): void {
     console.log('nOI')
-    const positionParam = this.route.snapshot.queryParamMap.get('position');
+    const positionFromLink = this.route.snapshot.queryParamMap.get('position');
 
-    if (positionParam !== null) {
-      this.position = positionParam;
-    }
-    //
-    // console.log("Position:", this.position);
-    // console.log("Position ser:", this.positionService.getPositions().subscribe(x =>
-    // console.log(x)));
 
     this.positionService.getPositions().subscribe((data: BasicPosition[]) => {
       this.positions = data;
       console.log('ngOnInit Positions:', this.positions);
+
+      const positionWithTitle = this.positions.find(position => position.title === positionFromLink);
+
+      if (positionWithTitle) {
+        this.basicPosition.id = positionWithTitle.id;
+        this.basicPosition.title = positionWithTitle.title;
+        this.basicPosition.description = positionWithTitle.description;
+        this.basicPosition.image = positionWithTitle.image;
+
+        console.log('Match found: ', this.basicPosition);
+      } else {
+        console.log('No matching position found for the specified title.');
+      }
     });
   }
 
-  ngAfterViewInit(): void{
-   console.log('nAVI')
+  ngAfterViewInit(): void {
+    console.log('nAVI')
+  }
 
-    // console.log('nAVI' ,this.basicPosition)
-    // console.log('nAVI2' ,this.positions)
+  positionAsString(): string {
+    return " id: " + this.basicPosition.id  + "\n" +
+      "    title: " + this.basicPosition.title  + "\n" +
+      "    description: " + this.basicPosition.description  + "\n" +
+      "    image: " + this.basicPosition.image  + "\n"
   }
 }
 
