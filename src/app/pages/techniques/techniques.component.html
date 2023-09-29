@@ -1,1 +1,18 @@
-<p>techniques works!</p>
+<div [formGroup]="mainFormGroup">
+    <mat-horizontal-stepper formArrayName="stepData" linear #stepper="matHorizontalStepper"
+                            [selectedIndex]="currentStep">
+        <mat-step *ngFor="let stepForm of getControls(); let i = index"
+                  [stepControl]="stepForm">
+            <div [formGroup]="mainFormGroup">
+                <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Name" required/>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext (click)="addInput(i)">Next</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

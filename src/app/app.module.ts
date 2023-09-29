@@ -21,6 +21,9 @@ import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {MockDataService} from './services/mockDb/mock-data.service';
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
+import {MatStepperModule} from "@angular/material/stepper";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -30,7 +33,7 @@ import {MatCardModule} from "@angular/material/card";
     TechniquesComponent,
     AccountComponent,
     SourcesComponent,
-    PositionDetailsComponent
+    PositionDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,10 @@ import {MatCardModule} from "@angular/material/card";
     MatListModule,
     InMemoryWebApiModule.forRoot(MockDataService),
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule
 
   ],
   providers: [],

@@ -12,9 +12,9 @@ export class PositionDetailsComponent {
 
   basicPosition: BasicPosition = {
     id: 100,
-    title: 'xxx',
-    description: 'xxx',
-    image: 'xxx',
+    title: '',
+    description: '',
+    image: '',
   };
 
   private positions: BasicPosition[] | undefined;
