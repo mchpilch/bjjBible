@@ -1,29 +1,28 @@
-<div [formGroup]="mainFormGroup">
-  <ng-container *ngFor="let __ of [mainFormGroup]">
-    <mat-stepper orientation="vertical" formArrayName="stepData"
-                 [selectedIndex]="currentStep">
-      <mat-step *ngFor="let stepForm of getControls(); let i = index"
-                [stepControl]="stepForm">
-        <div [formGroup]="mainFormGroup" formGroupName="{{i}}">
-          <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
-          <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" placeholder="Name"/> <!--required -->
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="desc" placeholder="Description"/> <!--required -->
-          </mat-form-field>
-          <div class="button-container">
-            <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add</button>
-            <button mat-button class="step-btn" (click)="delInput(i)">del</button>
-            <button mat-button class="step-btn" matStepperNext>NEXT</button>
-            <button mat-button class="step-btn" matStepperPrevious>Back</button>
-            <button mat-button class="step-btn" (click)="clog(i)">clog</button>
-          </div>
-        </div>
+<div class="steper-container">
+    <div [formGroup]="mainFormGroup">
+      <ng-container *ngFor="let __ of [mainFormGroup]">
+        <mat-stepper orientation="vertical" formArrayName="stepData"
+                     [selectedIndex]="currentStep">
+          <mat-step *ngFor="let stepForm of getControls(); let i = index"
+                    [stepControl]="stepForm">
+            <div [formGroup]="mainFormGroup" formGroupName="{{i}}">
+              <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
+              <mat-form-field class="step-ff">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Name" />
+              </mat-form-field>
+              <mat-form-field class="step-ff">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="desc" placeholder="Description" />
+              </mat-form-field>
+              <div class="button-container">
+                <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add</button>
+                <button mat-button class="step-btn" (click)="delInput(i)">Delete</button>
+              </div>
+            </div>
 
-      </mat-step>
-    </mat-stepper>
-  </ng-container>
+          </mat-step>
+        </mat-stepper>
+      </ng-container>
+    </div>
 </div>
