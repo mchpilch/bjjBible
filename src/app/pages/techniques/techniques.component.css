@@ -1,5 +1,6 @@
 .step-ff{
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .steper-container {
@@ -9,5 +10,12 @@
   grid-gap: 25px;
   padding: 20px;
   margin: auto;
+}
+.show-btn {
+  color: #e7e6f0;
+  background: #8c53c6;
+  padding: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
