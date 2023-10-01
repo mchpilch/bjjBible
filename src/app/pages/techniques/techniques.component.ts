@@ -17,7 +17,6 @@ export class TechniquesComponent {
     ngOnInit() {
         console.log('oI s')
         this.mainFormGroup = this._formBuilder.group({
-            formCount: 1,
             stepData: this._formBuilder.array([
                 this._formBuilder.group({
                     name: ["", Validators.required]
@@ -36,14 +35,20 @@ export class TechniquesComponent {
             name: ["", Validators.required]
         });
         arrayControl.push(newGroup);
-        const content = this;
+
         setTimeout(() => {
-            content.currentStep = currentIndex + 1;
+            this.currentStep = currentIndex + 1;
         });
+        console.log('addInput')
     }
 
-    // delInput(index: number): void {
-    //     const arrayControl = <FormArray>this.mainFormGroup.controls["stepData"];
-    //     arrayControl.removeAt(index);
-    // }
+    delInput(index: number): void {
+        const arrayControl = <FormArray>this.mainFormGroup.controls["stepData"];
+        arrayControl.removeAt(index);
+        console.log('delInput')
+    }
+
+  clog(): void {
+    console.log()
+  }
 }
