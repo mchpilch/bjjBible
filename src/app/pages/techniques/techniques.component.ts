@@ -12,17 +12,15 @@ export class TechniquesComponent {
     currentStep = 0;
 
     constructor(private _formBuilder: FormBuilder) {
-    }
-
-    ngOnInit() {
-        console.log('oI s')
-        this.mainFormGroup = this._formBuilder.group({
-            stepData: this._formBuilder.array([
-                this._formBuilder.group({
-                    name: ["", Validators.required]
-                })
-            ])
-        });
+      console.log('constr')
+      this.mainFormGroup = this._formBuilder.group({
+        stepData: this._formBuilder.array([
+          this._formBuilder.group({
+            name: ["", Validators.required],
+            desc: ["", Validators.required],
+          })
+        ])
+      });
     }
 
     getControls() {
@@ -30,25 +28,35 @@ export class TechniquesComponent {
     }
 
     addInput(currentIndex: number): void {
+        console.log('addInput')
         const arrayControl = <FormArray>this.mainFormGroup.controls["stepData"];
         let newGroup = this._formBuilder.group({
-            name: ["", Validators.required]
+            name: ["", Validators.required],
+            desc: ["", Validators.required],
         });
-        arrayControl.push(newGroup);
+      // console.log('FormArray contents before push:', arrayControl.value);
+      arrayControl.push(newGroup);
 
+
+
+      console.log('incread')
         setTimeout(() => {
-            this.currentStep = currentIndex + 1;
+          this.currentStep = currentIndex + 1;
         });
-        console.log('addInput')
+
+      console.log('  this.currentStep ',   this.currentStep )
     }
 
     delInput(index: number): void {
+        console.log('delInput')
         const arrayControl = <FormArray>this.mainFormGroup.controls["stepData"];
         arrayControl.removeAt(index);
-        console.log('delInput')
     }
 
-  clog(): void {
-    console.log()
+  clog(n: number): void {
+    console.log('clog')
+    console.log('index ', n);
+    console.log('currentStep ', this.currentStep);
+    console.log('FormArray contents', this.mainFormGroup.controls["stepData"].value);
   }
 }
