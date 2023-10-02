@@ -25,6 +25,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { CompetitorsComponent } from './pages/competitors/competitors/competitors.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AccountComponent,
     SourcesComponent,
     PositionDetailsComponent,
+    CompetitorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatStepperModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
 
   ],
   providers: [],
