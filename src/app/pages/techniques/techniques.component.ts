@@ -51,10 +51,15 @@ export class TechniquesComponent {
     if (index > 0) {
       const arrayControl = <FormArray>this.mainFormGroup.controls["stepData"];
       arrayControl.removeAt(index);
-      this.snackbarService.showSuccess('Item deleted successfully');
+      this.snackbarService.showMsg('Item deleted successfully');
     }else{
-      this.snackbarService.showError('Item cannot be  deleted');
+      this.snackbarService.showMsg('Item cannot be  deleted');
     }
+  }
+
+  submit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.mainFormGroup.value);
   }
 }
 

@@ -27,7 +27,6 @@ export class PositionDetailsComponent {
   }
 
   ngOnInit(): void {
-    console.log('nOI')
     const positionFromLink = this.route.snapshot.queryParamMap.get('position');
 
 
@@ -48,10 +47,6 @@ export class PositionDetailsComponent {
         console.log('No matching position found for the specified title.');
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    console.log('nAVI')
   }
 
   positionAsString(): string {

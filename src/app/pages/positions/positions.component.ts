@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {PositionService} from "../../services/position/position.service";
+import {BasicPosition} from "../../models/basic-position";
 
 @Component({
   selector: 'app-positions',
@@ -7,23 +9,22 @@ import {Router} from "@angular/router";
   styleUrls: ['./positions.component.css']
 })
 export class PositionsComponent {
+  public positions: BasicPosition[] | undefined;
 
-  private IMG_PATH_POSITIONS: string = 'assets/image/';
+  constructor(private router: Router,
+              private positionService: PositionService
+  ) {
+  }
 
-  positions: string[] = ['back-control','guard','knee-on-belly','mount','side-control','turtle'];
-
-  images = [
-    {name: 'back-control', src: this.IMG_PATH_POSITIONS + 'position-back-control.png', link: 'http://localhost:4200/positions/position-details?back-control'},
-    {name: 'guard', src: this.IMG_PATH_POSITIONS + 'position-guard.png', link: 'http://localhost:4200/positions/position-details?guard'},
-    {name: 'knee-on-belly', src: this.IMG_PATH_POSITIONS + 'position-knee-on-belly.png', link: 'http://localhost:4200/positions/position-details?knee-on-belly'},
-    {name: 'mount', src: this.IMG_PATH_POSITIONS + 'position-mount.png', link: 'http://localhost:4200/positions/position-details?mount'},
-    {name: 'side-control', src: this.IMG_PATH_POSITIONS + 'position-side-control.png', link: 'http://localhost:4200/positions/position-details?side-control'},
-    {name: 'turtle', src: this.IMG_PATH_POSITIONS + 'position-turtle.png', link: 'http://localhost:4200/positions/position-details?turtle'},
-  ];
-
-  constructor(private router: Router) { }
+  ngOnInit() {
+    this.positionService.getPositions().subscribe((data: BasicPosition[]) => {
+        this.positions = data;
+      }
+    )
+  }
 
   navigateToPositionDetails(position: string) {
-    this.router.navigate(['/positions/position-details'], { queryParams: { position: position } });
+    this.router.navigate(['/positions/position-details'], {queryParams: {position: position}});
   }
+
 }

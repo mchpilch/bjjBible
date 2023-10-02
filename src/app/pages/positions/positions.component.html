@@ -1,8 +1,8 @@
 <div class="grid-container">
   <mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let image of images">
-      <img class="bjj-position-img" (click)="navigateToPositionDetails(image.name)" [ngSrc]="image.src"
-           alt="Image of {{image.name}}"
+    <mat-grid-tile *ngFor="let position of positions">
+      <img class="bjj-position-img" (click)="navigateToPositionDetails(position.title)" [ngSrc]="position.image"
+           alt="Image of {{position.title}}"
            fill=""/>
     </mat-grid-tile>
   </mat-grid-list>

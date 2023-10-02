@@ -1,4 +1,4 @@
-<button mat-button class="show-btn" (click)="showStepper = !showStepper"> Dodaj swoją technikę</button>
+<button mat-button class="show-btn" (click)="showStepper = !showStepper"> Add new technique </button>
 
 <div class="steper-container" *ngIf="showStepper">
   <div [formGroup]="mainFormGroup">
@@ -7,7 +7,7 @@
                    [selectedIndex]="currentStep">
         <mat-step *ngFor="let stepForm of getControls(); let i = index"
                   [stepControl]="stepForm">
-          <div [formGroup]="mainFormGroup" formGroupName="{{i}}">
+          <form [formGroup]="mainFormGroup" formGroupName="{{i}}">
             <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
             <mat-form-field class="step-ff">
               <mat-label>Name</mat-label>
@@ -18,10 +18,11 @@
               <input matInput formControlName="desc" placeholder="Description"/>
             </mat-form-field>
             <div class="button-container">
-              <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add</button>
+              <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add step</button>
               <button mat-button class="step-btn" (click)="delInput(i)">Delete</button>
+              <button mat-button class="step-btn"  (click)="submit()">Submit</button>
             </div>
-          </div>
+          </form>
         </mat-step>
       </mat-stepper>
     </ng-container>
