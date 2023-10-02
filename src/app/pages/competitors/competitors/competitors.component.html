@@ -1,54 +1,50 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-  <!-- ID Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>Id</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.id}}</td>
-  </ng-container>
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.id}}</mat-cell>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.name}}</td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.name}}</mat-cell>
+    </ng-container>
 
-  <!-- Surname Column -->
-  <ng-container matColumnDef="surname">
-    <th mat-header-cell *matHeaderCellDef>surname</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.surname}}</td>
-  </ng-container>
+    <!-- Surname Column -->
+    <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >Surname</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.surname}}</mat-cell>
+    </ng-container>
 
-  <!-- Nickname Column -->
-  <ng-container matColumnDef="nickname">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.nickname}}</td>
-  </ng-container>
+    <!-- Nickname Column -->
+    <ng-container matColumnDef="nickname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nickname</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.nickname}}</mat-cell>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef>Weight</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.weight}}</td>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Weight</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.weight}}</mat-cell>
+    </ng-container>
 
-  <!-- Team Column -->
-  <ng-container matColumnDef="team">
-    <th mat-header-cell *matHeaderCellDef>Team</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.team}}</td>
-  </ng-container>
+    <!-- Team Column -->
+    <ng-container matColumnDef="team">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.team}}</mat-cell>
+    </ng-container>
 
-  <!-- Belt Column -->
-  <ng-container matColumnDef="belt">
-    <th mat-header-cell *matHeaderCellDef>Belt</th>
-    <td mat-cell *matCellDef="let competitor">{{competitor.belt}}</td>
-  </ng-container>
+    <!-- Belt Column -->
+    <ng-container matColumnDef="belt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Belt</mat-header-cell>
+        <mat-cell *matCellDef="let competitor">{{competitor.belt}}</mat-cell>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    (click)="clickedRows.add(row)"
-    [class.demo-row-is-clicked]="clickedRows.has(row)"
-    *matRowDef="let row; columns: displayedColumns;"
-  ></tr>
-</table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
 
 <mat-paginator [length]="50"
                [pageSize]="10"
