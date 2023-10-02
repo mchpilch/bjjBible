@@ -1,8 +1,10 @@
 export interface Competitor {
+  id: number;
   name: string;
-  position: number;
+  surname: string;
+  nickname: string;
   weight: number;
-  symbol: string;
+  team: string;
+  belt: string; //todo: enum
 }
-
 
