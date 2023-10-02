@@ -58,8 +58,9 @@ export class TechniquesComponent {
   }
 
   submit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.mainFormGroup.value);
+    // // TODO: Use EventEmitter with form value
+    // this.newTechnique =
+    // console.warn(this.mainFormGroup.value);
   }
 }
 

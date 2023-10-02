@@ -20,7 +20,25 @@ export class MockDataService implements InMemoryDbService {
       {id: 5, title: 'side-control', description: 'Description side-control', image: this.IMG_PATH_POSITIONS + 'position-side-control.png'},
       {id: 6, title: 'turtle', description: 'Description turtle', image: this.IMG_PATH_POSITIONS + 'position-turtle.png'},
     ];
+    const techniques = [
+      {
+        id: 1,
+        title: 'Technique 1',
+        steps: [
+          { name: 'Step 1', description: 'Description of Step 1' },
+          { name: 'Step 2', description: 'Description of Step 2' },
+        ]
+      },
+      {
+        id: 2,
+        title: 'Technique 2',
+        steps: [
+          { name: 'Step 1', description: 'Description of Step 1' },
+        ]
+      },
 
-    return {positions};
+    ];
+
+    return { positions, techniques };
   }
 }

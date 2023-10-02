@@ -1,0 +1,14 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.custom-card {
+  width: 80%;
+  max-width: 800px;
+  background: rebeccapurple;
+  justify-content: center;
+  align-items: center;
+}

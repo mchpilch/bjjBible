@@ -6,24 +6,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Make sure the container takes up the full viewport height */
+  min-height: 100vh;
 }
 
 .custom-card {
   width: 80%;
-  max-width: 800px; /* Adjust the maximum width as needed */
+  max-width: 800px;
   background: rebeccapurple;
   justify-content: center;
   align-items: center;
 }
 
 .custom-card-image {
-  max-width: 500px; /* Set a maximum width for the card image */
-  width: 100%; /* Ensure the image scales within the card */
+  max-width: 500px;
+  width: 100%;
 }
 
-/*https://www.colorhexa.com/8c53c6*/
-.position-btn{
+.position-btn {
   background: #8c53c6;
   color: #e7e6f0;
   margin-right: 5px;
