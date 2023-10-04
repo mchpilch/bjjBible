@@ -1,4 +1,9 @@
-# BjjBible
+# BjjBible - WORK IN PROGRESS ⏳⏳⏳
+
+
+## Idea - app about bjj where I experiment with Angular
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
