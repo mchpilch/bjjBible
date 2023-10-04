@@ -34,13 +34,14 @@ const competitor: Competitor[] = [
 })
 
 export class CompetitorsComponent {
+
   displayedColumns: string[] = ['id', 'name', 'surname', 'nickname', 'weight', 'team', 'belt'];
   dataSource: MatTableDataSource<Competitor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
-  clickedRows = new Set<Competitor>();
+  beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
 
   constructor() {
     this.dataSource = new MatTableDataSource(competitor);
@@ -54,11 +55,25 @@ export class CompetitorsComponent {
       return item[property as keyof Competitor];
     };
     this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter) || data.surname.toLowerCase().includes(filter);
+    };
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  applyFilter(event: Event, filterName: string) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter);
+    };
+  }
 }
+
 

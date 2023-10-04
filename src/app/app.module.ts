@@ -22,7 +22,7 @@ import {MockDataService} from './services/mockDb/mock-data.service';
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatStepperModule} from "@angular/material/stepper";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { CompetitorsComponent } from './pages/competitors/competitors/competitors.component';
@@ -41,29 +41,30 @@ import {MatSortModule} from "@angular/material/sort";
     PositionDetailsComponent,
     CompetitorsComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        AppRoutingModule,
-        RouterOutlet,
-        RouterModule,
-        MatGridListModule,
-        NgOptimizedImage,
-        MatListModule,
-        InMemoryWebApiModule.forRoot(MockDataService),
-        HttpClientModule,
-        MatCardModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    AppRoutingModule,
+    RouterOutlet,
+    RouterModule,
+    MatGridListModule,
+    NgOptimizedImage,
+    MatListModule,
+    InMemoryWebApiModule.forRoot(MockDataService),
+    HttpClientModule,
+    MatCardModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

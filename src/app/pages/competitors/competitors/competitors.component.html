@@ -1,48 +1,66 @@
+
+
+<div class="filter-container">
+  <div *ngFor="let filterName of displayedColumns" class="filter">
+    <mat-form-field>
+      <mat-label> {{ filterName }} </mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event, filterName)"
+        placeholder="{{ filterName }} "
+      />
+    </mat-form-field>
+  </div>
+</div>
+
+
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.id}}</mat-cell>
-    </ng-container>
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+     ID
+    </mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.id}}</mat-cell>
+  </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.name}}</mat-cell>
-    </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.name}}</mat-cell>
+  </ng-container>
 
-    <!-- Surname Column -->
-    <ng-container matColumnDef="surname">
-        <mat-header-cell *matHeaderCellDef mat-sort-header >Surname</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.surname}}</mat-cell>
-    </ng-container>
+  <!-- Surname Column -->
+  <ng-container matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Surname</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.surname}}</mat-cell>
+  </ng-container>
 
-    <!-- Nickname Column -->
-    <ng-container matColumnDef="nickname">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Nickname</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.nickname}}</mat-cell>
-    </ng-container>
+  <!-- Nickname Column -->
+  <ng-container matColumnDef="nickname">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nickname</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.nickname}}</mat-cell>
+  </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Weight</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.weight}}</mat-cell>
-    </ng-container>
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Weight</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.weight}}</mat-cell>
+  </ng-container>
 
-    <!-- Team Column -->
-    <ng-container matColumnDef="team">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.team}}</mat-cell>
-    </ng-container>
+  <!-- Team Column -->
+  <ng-container matColumnDef="team">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.team}}</mat-cell>
+  </ng-container>
 
-    <!-- Belt Column -->
-    <ng-container matColumnDef="belt">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Belt</mat-header-cell>
-        <mat-cell *matCellDef="let competitor">{{competitor.belt}}</mat-cell>
-    </ng-container>
+  <!-- Belt Column -->
+  <ng-container matColumnDef="belt">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Belt</mat-header-cell>
+    <mat-cell *matCellDef="let competitor">{{competitor.belt}}</mat-cell>
+  </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
 </mat-table>
 
