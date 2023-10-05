@@ -5,7 +5,7 @@ import {TechniquesComponent} from "./pages/techniques/techniques.component";
 import {AccountComponent} from "./pages/account/account.component";
 import {SourcesComponent} from "./pages/sources/sources.component";
 import {PositionDetailsComponent} from "./pages/positionDetails/position-details.component";
-import {CompetitorsComponent} from "./pages/competitors/competitors/competitors.component";
+import {CompetitorsComponent} from "./pages/competitors/competitors.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/positions', pathMatch: 'full'},
