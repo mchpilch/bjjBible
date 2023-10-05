@@ -3,9 +3,10 @@ import {Competitor} from "../../../models/competitor";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {FormControl} from "@angular/forms";
 
 const competitor: Competitor[] = [
-  {id: 1, name: 'Hydrogen', surname: 'Wasilewska', nickname: 'xaf', weight: 75, team: 'H', belt: 'brown'},
+  {id: 1, name: 'aabbcc13', surname: 'aabbcc12', nickname: 'abc1', weight: 75, team: 'H', belt: 'brown'},
   {id: 2, name: 'Helium', surname: 'Wieczorek', nickname: 'sdfsdf', weight: 50, team: 'He', belt: 'brown'},
   {id: 3, name: 'Lithium', surname: 'Jabłońska', nickname: 'sdf', weight: 65, team: 'Li', belt: 'black'},
   {id: 4, name: 'Beryllium', surname: 'Wójcik', nickname: 'fghfg', weight: 45, team: 'Be', belt: 'brown'},
@@ -39,25 +40,30 @@ export class CompetitorsComponent {
   dataSource: MatTableDataSource<Competitor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
-  customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
-  beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
+  // Create form controls for filtering
+  filters: { [key: string]: FormControl } = {};
 
   constructor() {
     this.dataSource = new MatTableDataSource(competitor);
   }
 
   ngOnInit() {
-    this.dataSource.sortingDataAccessor = (item, property) => {
-      if (property === 'belt') {
-        return this.customBeltsOrder.indexOf(item.belt);
-      }
-      return item[property as keyof Competitor];
-    };
+    this.customSortingBelts();
     this.dataSource.sort = this.sort;
 
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter) || data.surname.toLowerCase().includes(filter);
+    this.displayedColumns.forEach(column => {
+      this.filters[column] = new FormControl('');
+    });
+
+    this.dataSource.filterPredicate = (data, filter) => {
+      const filters = JSON.parse(filter) as { [key: string]: string };
+      for (const column of this.displayedColumns) {
+        const value = String((data as any)[column]).toLowerCase(); // Convert to string
+        if (filters[column] && value.indexOf(filters[column].toLowerCase()) === -1) {
+          return false;
+        }
+      }
+      return true;
     };
   }
 
@@ -66,13 +72,23 @@ export class CompetitorsComponent {
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event, filterName: string) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter);
+  customSortingBelts(){
+    const customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
+    //beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      if (property === 'belt') {
+        return customBeltsOrder.indexOf(item.belt);
+      }
+      return item[property as keyof Competitor];
     };
+  }
+
+  applyFilters() {
+    const filters: {[index: string]:any}  = {};
+    for (const column of this.displayedColumns) {
+      filters[column] = this.filters[column].value;
+    }
+    this.dataSource.filter = JSON.stringify(filters);
   }
 }
 

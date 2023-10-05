@@ -1,18 +1,11 @@
-
-
 <div class="filter-container">
-  <div *ngFor="let filterName of displayedColumns" class="filter">
+  <div *ngFor="let column of displayedColumns" class="filter">
     <mat-form-field>
-      <mat-label> {{ filterName }} </mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event, filterName)"
-        placeholder="{{ filterName }} "
-      />
+      <mat-label> {{ column }} </mat-label>
+      <input matInput [formControl]="filters[column]" placeholder="x{{ column }}" (keyup)="applyFilters()">
     </mat-form-field>
   </div>
 </div>
-
 
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
   <!-- ID Column -->

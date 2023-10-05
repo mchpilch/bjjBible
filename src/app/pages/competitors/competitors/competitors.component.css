@@ -1,5 +1,6 @@
 .demo-table {
   width: 100%;
+  background: #8c53c6;
 }
 
 .mat-mdc-row .mat-mdc-cell {
@@ -23,7 +24,7 @@
 
 .filter {
   margin: 5px;
-  flex-grow: 1;
+  width: calc(100% / 7);
 }
 
 .mat-form-field {
