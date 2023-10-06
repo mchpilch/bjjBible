@@ -16,20 +16,36 @@ import {GeneratorService} from "../../services/generator/generator.service";
 export class CompetitorsComponent {
   competitor: Competitor[] = [];
   displayedColumns: string[] = ['id', 'name', 'surname', 'nickname', 'weight', 'team', 'belt'];
+  columnsWithRegularFilter: string[] = ['name', 'surname', 'nickname', 'team'];
   dataSource: MatTableDataSource<Competitor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  // Create form controls for filtering
-  filters: { [key: string]: FormControl } = {};
+
+  filters: { [key: string]: FormControl } = {
+    weight: new FormControl([50, 110]),
+  };
+
+
+
+  sliderValueCurMin: number = 50;
+  sliderValueCurMax: number = 110;
+
+  onSliderInput() {
+    this.filters['weight'].setValue([this.sliderValueCurMin, this.sliderValueCurMax]);
+
+    //console.log('x min ' , this.filters['weight'].value[0].toString())
+    //console.log('x max ' , this.filters['weight'].value[1].toString())
+  }
 
   constructor(
     private generatorService: GeneratorService
   ) {
-    this.competitor = generatorService.generateCompetitors(150);
+    this.competitor = generatorService.generateCompetitors(100);
     this.dataSource = new MatTableDataSource(this.competitor);
   }
 
   ngOnInit() {
+   //console.log('ngOnInit')
     this.customSortingBelts();
     this.dataSource.sort = this.sort;
 
@@ -37,11 +53,30 @@ export class CompetitorsComponent {
       this.filters[column] = new FormControl('');
     });
 
-    this.dataSource.filterPredicate = (data, filter) => {
+    this.dataSource.filterPredicate = (data, filter): boolean => {
+      // console.log('xxx', filter);
+
+     if (this.filters['weight']) {
+        // console.log('xxx', filter);
+        const minValue = this.filters['weight'].value[0];
+        const maxValue = this.filters['weight'].value[1];
+        // console.log('xxx', filter);
+
+        const weightValue = Number((data as any)['weight']);
+
+        if (weightValue < minValue || weightValue > maxValue) {
+          //console.log('Weight filter: Value out of range', weightValue, minValue, maxValue);
+          return false;
+        }
+      }
+
       const filters = JSON.parse(filter) as { [key: string]: string };
-      for (const column of this.displayedColumns) {
+      // console.log('filters' ,filters)
+      for (const column of this.columnsWithRegularFilter) {
         const value = String((data as any)[column]).toLowerCase();
-        if (filters[column] && value.indexOf(filters[column].toLowerCase()) === -1) {
+        console.log('column ' ,column, ' value ' ,value)
+        if (filters[column] && value.indexOf(filters[column]) === -1) {
+          //console.log('Filtering out row:', data, 'based on column:', column);
           return false;
         }
       }
@@ -54,7 +89,7 @@ export class CompetitorsComponent {
     this.dataSource.sort = this.sort;
   }
 
-  customSortingBelts(){
+  customSortingBelts() {
     const customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
     //beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
     this.dataSource.sortingDataAccessor = (item, property) => {
@@ -66,7 +101,8 @@ export class CompetitorsComponent {
   }
 
   applyFilters() {
-    const filters: {[index: string]:any}  = {};
+    console.log('apply filters')
+    const filters: { [index: string]: any } = {};
     for (const column of this.displayedColumns) {
       filters[column] = this.filters[column].value;
     }

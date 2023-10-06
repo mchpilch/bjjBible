@@ -1,17 +1,24 @@
 <div class="filter-container">
-  <div *ngFor="let column of displayedColumns" class="filter">
+  <div *ngFor="let column of columnsWithRegularFilter" class="filter">
     <mat-form-field>
       <mat-label> {{ column }} </mat-label>
-      <input matInput [formControl]="filters[column]" placeholder="x{{ column }}" (keyup)="applyFilters()">
+      <input matInput [formControl]="filters[column]" placeholder="{{ column }}" (keyup)="applyFilters()">
     </mat-form-field>
   </div>
+
+  <mat-slider min="50" max="110" step="5" showTickMarks discrete ngDefaultControl
+              (input)="onSliderInput()" [formControl]="filters['weight']" (change)="applyFilters()">
+    <input value="{{ sliderValueCurMin }}" matSliderStartThumb [(ngModel)]="sliderValueCurMin">
+    <input value="{{ sliderValueCurMax }}" matSliderEndThumb [(ngModel)]="sliderValueCurMax">
+  </mat-slider>
 </div>
+
 
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
   <!-- ID Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
-     ID
+      ID
     </mat-header-cell>
     <mat-cell *matCellDef="let competitor">{{competitor.id}}</mat-cell>
   </ng-container>
