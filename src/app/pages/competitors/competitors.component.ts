@@ -18,7 +18,7 @@ export class CompetitorsComponent {
   competitor: Competitor[] = [];
   displayedColumns: string[] = ['name', 'surname', 'nickname', 'team', 'weight', 'belt'];
   columnsWithRegularFilter: string[] = ['name', 'surname', 'nickname', 'team'];
-  customBeltsOrder: string[] = ['black', 'brown', 'purple', 'blue', 'white', 'x'];
+  customBeltsOrder: string[] = ['', 'black', 'brown', 'purple', 'blue', 'white'];
   sliderValueCurMin: number = 50;
   sliderValueCurMax: number = 150;
 
@@ -36,11 +36,11 @@ export class CompetitorsComponent {
   constructor(
     private generatorService: GeneratorService
   ) {
-    this.competitor = generatorService.generateCompetitors(1000);
+    this.competitor = generatorService.generateCompetitors(200);
     this.dataSource = new MatTableDataSource(this.competitor);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.customSortingBelts();
     this.dataSource.sort = this.sort;
 
@@ -75,13 +75,12 @@ export class CompetitorsComponent {
     };
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  customSortingBelts() {
-    this.customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
+  customSortingBelts(): void {
     //beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
     this.dataSource.sortingDataAccessor = (item, property) => {
       if (property === 'belt') {
@@ -91,7 +90,7 @@ export class CompetitorsComponent {
     };
   }
 
-  applyFilters() {
+  applyFilters(): void {
     this.filters['weight'].setValue([this.sliderValueCurMin, this.sliderValueCurMax]);
     this.filters['belt'].setValue(this.selectedBelt);
 
@@ -102,9 +101,18 @@ export class CompetitorsComponent {
     this.dataSource.filter = JSON.stringify(filters);
   }
 
-  beltChange(event: MatSelectChange) {
+  beltChange(event: MatSelectChange): void {
     this.selectedBelt = event.value;
     this.applyFilters()
   }
 
+  resetFilters(): void {
+    this.selectedBelt = '';
+    this.sliderValueCurMin = 50;
+    this.sliderValueCurMax = 120;
+    for (const controlName in this.filters) {
+      this.filters[controlName].setValue('');
+    }
+    this.applyFilters();
+  }
 }

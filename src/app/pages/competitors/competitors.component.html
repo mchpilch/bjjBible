@@ -20,6 +20,9 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <button mat-button class="icon-btn" color="primary" (click)="resetFilters()">
+    <mat-icon class="icon-display">clear</mat-icon>
+  </button>
 </div>
 
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">

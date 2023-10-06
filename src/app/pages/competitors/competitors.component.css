@@ -35,3 +35,14 @@ mat-slider {
   width: calc(100% / 7);
 }
 
+.icon-display {
+  transform: scale(3);
+  margin: 20px;
+  /*background: red;*/
+}
+
+.icon-btn{
+  /*background: aqua;*/
+  margin: 20px;
+}
+
