@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {FormControl} from "@angular/forms";
 import {GeneratorService} from "../../services/generator/generator.service";
+import {MatSelectChange} from "@angular/material/select";
 
 
 @Component({
@@ -17,18 +18,20 @@ export class CompetitorsComponent {
   competitor: Competitor[] = [];
   displayedColumns: string[] = ['name', 'surname', 'nickname', 'team', 'weight', 'belt'];
   columnsWithRegularFilter: string[] = ['name', 'surname', 'nickname', 'team'];
+  customBeltsOrder: string[] = ['black', 'brown', 'purple', 'blue', 'white', 'x'];
+  sliderValueCurMin: number = 50;
+  sliderValueCurMax: number = 150;
+
   dataSource: MatTableDataSource<Competitor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  selectedBelt: string = '';
+
   filters: { [key: string]: FormControl } = {
-    weight: new FormControl([50, 110]),
+    weight: new FormControl([this.sliderValueCurMin, this.sliderValueCurMax]),
+    belt: new FormControl(this.selectedBelt),
   };
-
-
-  sliderValueCurMin: number = 50;
-  sliderValueCurMax: number = 110;
-
 
   constructor(
     private generatorService: GeneratorService
@@ -58,8 +61,11 @@ export class CompetitorsComponent {
         }
       }
 
+      const regularFilterPredicateColumns: string[] = ['name', 'surname', 'nickname', 'team', 'belt'];
+
       const filters = JSON.parse(filter) as { [key: string]: string };
-      for (const column of this.columnsWithRegularFilter) {
+
+      for (const column of regularFilterPredicateColumns) {
         const value = String((data as any)[column]).toLowerCase();
         if (filters[column] && value.indexOf(filters[column]) === -1) {
           return false;
@@ -75,11 +81,11 @@ export class CompetitorsComponent {
   }
 
   customSortingBelts() {
-    const customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
+    this.customBeltsOrder = ['black', 'brown', 'purple', 'blue', 'white'];
     //beltColors = ['⚪🔵🟣🟤⚫']; //todo: move to belt enum
     this.dataSource.sortingDataAccessor = (item, property) => {
       if (property === 'belt') {
-        return customBeltsOrder.indexOf(item.belt);
+        return this.customBeltsOrder.indexOf(item.belt);
       }
       return item[property as keyof Competitor];
     };
@@ -87,6 +93,7 @@ export class CompetitorsComponent {
 
   applyFilters() {
     this.filters['weight'].setValue([this.sliderValueCurMin, this.sliderValueCurMax]);
+    this.filters['belt'].setValue(this.selectedBelt);
 
     const filters: { [index: string]: any } = {};
     for (const column of this.displayedColumns) {
@@ -94,4 +101,10 @@ export class CompetitorsComponent {
     }
     this.dataSource.filter = JSON.stringify(filters);
   }
+
+  beltChange(event: MatSelectChange) {
+    this.selectedBelt = event.value;
+    this.applyFilters()
+  }
+
 }

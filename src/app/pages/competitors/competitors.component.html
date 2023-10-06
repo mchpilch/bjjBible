@@ -6,20 +6,21 @@
     </mat-form-field>
   </div>
   <div class="filter">
-    <mat-slider min="50" max="110" step="5" discrete ngDefaultControl
+    <mat-slider min="50" max="130" step="5" discrete ngDefaultControl
                 [formControl]="filters['weight']" (change)="applyFilters()">
       <input matSliderStartThumb [(ngModel)]="sliderValueCurMin">
       <input matSliderEndThumb [(ngModel)]="sliderValueCurMax">
     </mat-slider>
   </div>
   <div class="filter">
-      <mat-form-field>
-        <mat-label> belt </mat-label>
-        <input matInput  (keyup)="applyFilters()">
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>Belt</mat-label>
+      <mat-select [formControl]="filters['belt']" (selectionChange)="beltChange($event)">
+        <mat-option *ngFor="let belt of customBeltsOrder" [value]="belt"> {{ belt }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
-
 
 <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
   <!-- ID Column -->

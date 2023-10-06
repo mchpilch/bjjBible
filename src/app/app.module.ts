@@ -30,6 +30,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatSelectModule} from "@angular/material/select";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -42,31 +44,33 @@ import {MatSliderModule} from "@angular/material/slider";
     PositionDetailsComponent,
     CompetitorsComponent,
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        AppRoutingModule,
-        RouterOutlet,
-        RouterModule,
-        MatGridListModule,
-        NgOptimizedImage,
-        MatListModule,
-        InMemoryWebApiModule.forRoot(MockDataService),
-        HttpClientModule,
-        MatCardModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        FormsModule,
-        MatSliderModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    AppRoutingModule,
+    RouterOutlet,
+    RouterModule,
+    MatGridListModule,
+    NgOptimizedImage,
+    MatListModule,
+    InMemoryWebApiModule.forRoot(MockDataService),
+    HttpClientModule,
+    MatCardModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatFormFieldModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

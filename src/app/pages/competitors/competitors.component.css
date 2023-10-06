@@ -30,3 +30,8 @@
 .mat-form-field {
   width: 100%;
 }
+
+mat-slider {
+  width: calc(100% / 7);
+}
+
