@@ -15,7 +15,7 @@ import {GeneratorService} from "../../services/generator/generator.service";
 
 export class CompetitorsComponent {
   competitor: Competitor[] = [];
-  displayedColumns: string[] = ['id', 'name', 'surname', 'nickname', 'weight', 'team', 'belt'];
+  displayedColumns: string[] = ['name', 'surname', 'nickname', 'team', 'weight', 'belt'];
   columnsWithRegularFilter: string[] = ['name', 'surname', 'nickname', 'team'];
   dataSource: MatTableDataSource<Competitor>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,26 +26,18 @@ export class CompetitorsComponent {
   };
 
 
-
   sliderValueCurMin: number = 50;
   sliderValueCurMax: number = 110;
 
-  onSliderInput() {
-    this.filters['weight'].setValue([this.sliderValueCurMin, this.sliderValueCurMax]);
-
-    //console.log('x min ' , this.filters['weight'].value[0].toString())
-    //console.log('x max ' , this.filters['weight'].value[1].toString())
-  }
 
   constructor(
     private generatorService: GeneratorService
   ) {
-    this.competitor = generatorService.generateCompetitors(100);
+    this.competitor = generatorService.generateCompetitors(1000);
     this.dataSource = new MatTableDataSource(this.competitor);
   }
 
   ngOnInit() {
-   //console.log('ngOnInit')
     this.customSortingBelts();
     this.dataSource.sort = this.sort;
 
@@ -54,29 +46,22 @@ export class CompetitorsComponent {
     });
 
     this.dataSource.filterPredicate = (data, filter): boolean => {
-      // console.log('xxx', filter);
 
-     if (this.filters['weight']) {
-        // console.log('xxx', filter);
+      if (this.filters['weight']) {
         const minValue = this.filters['weight'].value[0];
         const maxValue = this.filters['weight'].value[1];
-        // console.log('xxx', filter);
 
         const weightValue = Number((data as any)['weight']);
 
         if (weightValue < minValue || weightValue > maxValue) {
-          //console.log('Weight filter: Value out of range', weightValue, minValue, maxValue);
           return false;
         }
       }
 
       const filters = JSON.parse(filter) as { [key: string]: string };
-      // console.log('filters' ,filters)
       for (const column of this.columnsWithRegularFilter) {
         const value = String((data as any)[column]).toLowerCase();
-        console.log('column ' ,column, ' value ' ,value)
         if (filters[column] && value.indexOf(filters[column]) === -1) {
-          //console.log('Filtering out row:', data, 'based on column:', column);
           return false;
         }
       }
@@ -101,7 +86,8 @@ export class CompetitorsComponent {
   }
 
   applyFilters() {
-    console.log('apply filters')
+    this.filters['weight'].setValue([this.sliderValueCurMin, this.sliderValueCurMax]);
+
     const filters: { [index: string]: any } = {};
     for (const column of this.displayedColumns) {
       filters[column] = this.filters[column].value;
@@ -109,5 +95,3 @@ export class CompetitorsComponent {
     this.dataSource.filter = JSON.stringify(filters);
   }
 }
-
-

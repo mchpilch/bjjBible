@@ -5,12 +5,19 @@
       <input matInput [formControl]="filters[column]" placeholder="{{ column }}" (keyup)="applyFilters()">
     </mat-form-field>
   </div>
-
-  <mat-slider min="50" max="110" step="5" showTickMarks discrete ngDefaultControl
-              (input)="onSliderInput()" [formControl]="filters['weight']" (change)="applyFilters()">
-    <input value="{{ sliderValueCurMin }}" matSliderStartThumb [(ngModel)]="sliderValueCurMin">
-    <input value="{{ sliderValueCurMax }}" matSliderEndThumb [(ngModel)]="sliderValueCurMax">
-  </mat-slider>
+  <div class="filter">
+    <mat-slider min="50" max="110" step="5" discrete ngDefaultControl
+                [formControl]="filters['weight']" (change)="applyFilters()">
+      <input matSliderStartThumb [(ngModel)]="sliderValueCurMin">
+      <input matSliderEndThumb [(ngModel)]="sliderValueCurMax">
+    </mat-slider>
+  </div>
+  <div class="filter">
+      <mat-form-field>
+        <mat-label> belt </mat-label>
+        <input matInput  (keyup)="applyFilters()">
+      </mat-form-field>
+  </div>
 </div>
 
 
