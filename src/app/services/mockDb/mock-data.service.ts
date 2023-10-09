@@ -24,7 +24,7 @@ export class MockDataService implements InMemoryDbService {
       {
         id: 1,
         title: 'Technique 1',
-        steps: [
+        stepData: [
           { name: 'Step 1', description: 'Description of Step 1' },
           { name: 'Step 2', description: 'Description of Step 2' },
         ]
@@ -32,7 +32,7 @@ export class MockDataService implements InMemoryDbService {
       {
         id: 2,
         title: 'Technique 2',
-        steps: [
+        stepData: [
           { name: 'Step 1', description: 'Description of Step 1' },
         ]
       },

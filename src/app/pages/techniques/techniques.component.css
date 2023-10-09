@@ -3,14 +3,14 @@
   margin-top: 10px;
 }
 
-.steper-container {
+.stepper-container {
   display: grid;
-  /*background: aqua;*/
   width: 90vw;
   grid-gap: 25px;
   padding: 20px;
   margin: auto;
 }
+
 .show-btn {
   color: #e7e6f0;
   background: #8c53c6;
@@ -19,3 +19,27 @@
   margin-top: 10px;
 }
 
+.desc-p{
+  color: black;
+  font-family: serif;
+}
+
+.custom-stepper {
+  display: block;
+  width: 100%;
+}
+
+.custom-step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px;
+  background-color: #f0f0f0;
+}
+
+.custom-step-content {
+  display: block;
+  padding: 16px;
+  background-color: #fff;
+}
