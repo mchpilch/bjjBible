@@ -1,16 +1,90 @@
 <div class="card-container">
+    <!---- LOGIN ---->
     <mat-card class="custom-card">
         <mat-card-content>
             <form #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="isLogin">
                 <h2>Log In</h2>
-
+                <mat-form-field>
+                    <!-- EMAIL -->
+                <input matInput placeholder="email" [(ngModel)]="email" name="email" required>
+                    <mat-error>
+                        Please provide a valid email address
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <!-- PASSWORD -->
+                    <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+                    <mat-error>
+                        Please provide a valid password
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <br>
+                <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid"
+                        (click)="isLogin = true;">Login
+                </button>
             </form>
         </mat-card-content>
 
+        <!---- REGISTER ---->
         <mat-card-content>
             <form #loginForm="ngForm" (ngSubmit)="onSubmit()"  *ngIf="!isLogin">
                 <h2>Register</h2>
-
+                <!-- FIRSTNAME -->
+                <mat-form-field>
+                    <input matInput placeholder="firstname" [(ngModel)]="firstname" name="firstname" required>
+                    <mat-error>
+                        Please provide your firstname
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <!-- SURNAME -->
+                <mat-form-field>
+                    <input matInput placeholder="surname" [(ngModel)]="surname" name="surname" required>
+                    <mat-error>
+                        Please provide your surname
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <!-- EMAIL -->
+                <mat-form-field>
+                    <input matInput placeholder="email" [(ngModel)]="email" name="email" required>
+                    <mat-error>
+                        Please provide your email address
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <!-- PASSWORD -->
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+                    <mat-error>
+                        Please provide a valid password
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <!-- PASSWORD CONFIRM -->
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                    <mat-error>
+                        Please repeat password
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">
+                 Save
+                </button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <mat-hint>
+                    I already have an account
+                </mat-hint>
+                <br>
+                <button mat-raised-button color="primary"
+                        (click)="isLogin = true;">Go to login page
+                </button>
             </form>
         </mat-card-content>
     </mat-card>

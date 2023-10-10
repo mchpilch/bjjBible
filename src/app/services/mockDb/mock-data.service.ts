@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {InMemoryDbService} from "angular-in-memory-web-api";
 import {BasicPosition} from "../../models/basic-position";
+import {User} from "../../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,11 @@ export class MockDataService implements InMemoryDbService {
 
     ];
 
-    return { positions, techniques };
+    const users: User[] = [
+      {id: 1, firstname: 'xxx', surname: 'xxx', email: 'xxx', password: 'xxx', belt: 'xxx', team: 'xxx', weight: 100},
+
+    ];
+
+    return { positions, techniques, users };
   }
 }

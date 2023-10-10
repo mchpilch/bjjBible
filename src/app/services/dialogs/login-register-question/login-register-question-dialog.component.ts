@@ -26,7 +26,6 @@ export class LoginRegisterQuestionDialogComponent {
     }
 
     navigateToLoginRegister(action: string) {
-        console.log('action dialog', action)
         this.router.navigate(['/account/login-register'], {queryParams: {action: action}});
     }
 }

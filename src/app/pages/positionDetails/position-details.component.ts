@@ -32,7 +32,6 @@ export class PositionDetailsComponent {
 
     this.positionService.getPositions().subscribe((data: BasicPosition[]) => {
       this.positions = data;
-      console.log('ngOnInit Positions:', this.positions);
 
       const positionWithTitle = this.positions.find(position => position.title === positionFromLink);
 
@@ -42,9 +41,9 @@ export class PositionDetailsComponent {
         this.basicPosition.description = positionWithTitle.description;
         this.basicPosition.image = positionWithTitle.image;
 
-        console.log('Match found: ', this.basicPosition);
+        //console.log('Match found: ', this.basicPosition);
       } else {
-        console.log('No matching position found for the specified title.');
+        //console.log('No matching position found for the specified title.');
       }
     });
   }
