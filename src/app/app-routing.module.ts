@@ -6,20 +6,22 @@ import {AccountComponent} from "./pages/account/account.component";
 import {SourcesComponent} from "./pages/sources/sources.component";
 import {PositionDetailsComponent} from "./pages/positionDetails/position-details.component";
 import {CompetitorsComponent} from "./pages/competitors/competitors.component";
+import {LoginRegisterComponent} from "./pages/account/login-register/login-register.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/positions', pathMatch: 'full'},
-  {path: 'positions', component: PositionsComponent},
-  {path: 'positions/position-details', component: PositionDetailsComponent},
-  {path: 'techniques', component: TechniquesComponent},
-  {path: 'competitors', component: CompetitorsComponent},
-  {path: 'account', component: AccountComponent},
-  {path: 'sources', component: SourcesComponent}
+    {path: '', redirectTo: '/positions', pathMatch: 'full'},
+    {path: 'positions', component: PositionsComponent},
+    {path: 'positions/position-details', component: PositionDetailsComponent},
+    {path: 'techniques', component: TechniquesComponent},
+    {path: 'competitors', component: CompetitorsComponent},
+    {path: 'account', component: AccountComponent},
+    {path: 'account/login-register', component: LoginRegisterComponent},
+    {path: 'sources', component: SourcesComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

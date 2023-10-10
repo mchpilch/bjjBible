@@ -1,0 +1,17 @@
+<div class="card-container">
+    <mat-card class="custom-card">
+        <mat-card-content>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="isLogin">
+                <h2>Log In</h2>
+
+            </form>
+        </mat-card-content>
+
+        <mat-card-content>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit()"  *ngIf="!isLogin">
+                <h2>Register</h2>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

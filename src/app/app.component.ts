@@ -1,28 +1,28 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {
-  LoginRegisterQuestionDialogComponent
-} from "./services/dialogs/loginRegisterQuestion/login-register-question/login-register-question-dialog.component";
+    LoginRegisterQuestionDialogComponent
+} from "./services/dialogs/login-register-question/login-register-question-dialog.component";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = 'bjjBible';
-  isUserLogedIn: boolean = false;
+    title: string = 'bjjBible';
+    userLoggedIn: boolean = false;
 
-  constructor(public dialog: MatDialog) {
-  }
+    constructor(public dialog: MatDialog) {
+    }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(LoginRegisterQuestionDialogComponent, {
-      width: '350px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      position: {right: '1%', top: '4%'}
-    });
-  }
+    openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+        this.dialog.open(LoginRegisterQuestionDialogComponent, {
+            width: '350px',
+            enterAnimationDuration,
+            exitAnimationDuration,
+            position: {right: '1%', top: '4%'}
+        });
+    }
 }
 

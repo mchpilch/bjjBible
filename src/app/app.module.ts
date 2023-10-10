@@ -33,52 +33,54 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {
-  LoginRegisterQuestionDialogComponent
-} from './services/dialogs/loginRegisterQuestion/login-register-question/login-register-question-dialog.component';
+    LoginRegisterQuestionDialogComponent
+} from './services/dialogs/login-register-question/login-register-question-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {LoginRegisterComponent} from './pages/account/login-register/login-register.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PositionsComponent,
-    TechniquesComponent,
-    AccountComponent,
-    SourcesComponent,
-    PositionDetailsComponent,
-    CompetitorsComponent,
-    LoginRegisterQuestionDialogComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    AppRoutingModule,
-    RouterOutlet,
-    RouterModule,
-    MatGridListModule,
-    NgOptimizedImage,
-    MatListModule,
-    InMemoryWebApiModule.forRoot(MockDataService),
-    HttpClientModule,
-    MatCardModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    FormsModule,
-    MatSliderModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatDialogModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PositionsComponent,
+        TechniquesComponent,
+        AccountComponent,
+        SourcesComponent,
+        PositionDetailsComponent,
+        CompetitorsComponent,
+        LoginRegisterQuestionDialogComponent,
+        LoginRegisterComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        AppRoutingModule,
+        RouterOutlet,
+        RouterModule,
+        MatGridListModule,
+        NgOptimizedImage,
+        MatListModule,
+        InMemoryWebApiModule.forRoot(MockDataService),
+        HttpClientModule,
+        MatCardModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        FormsModule,
+        MatSliderModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatDialogModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
