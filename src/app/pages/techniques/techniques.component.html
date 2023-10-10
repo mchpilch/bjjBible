@@ -1,35 +1,35 @@
-<button mat-button class="show-btn" (click)="showStepper = !showStepper">
-  {{showStepper ? 'HIDE' : 'SHOW'}} section: Add new technique
-</button>
+<div class="techniques-container">
 
-<div class="stepper-container" *ngIf="showStepper">
-  <h2>Add your own technique</h2>
+  <button mat-button class="show-btn" (click)="showStepper = !showStepper">
+    {{showStepper ? 'HIDE' : 'SHOW'}} section: Add new technique
+  </button>
 
-  <form [formGroup]="mainFormGroup">
-    <mat-stepper orientation="vertical" formArrayName="stepData" [selectedIndex]="currentStep">
-      <mat-step *ngFor="let stepForm of getStepDataControls(); let i = index" [stepControl]="stepForm">
-        <form [formGroup]="mainFormGroup" formGroupName="{{i}}">
-          <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
-          <mat-form-field class="step-ff">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" placeholder="Name"/>
-          </mat-form-field>
-          <mat-form-field class="step-ff">
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="desc" placeholder="Description"/>
-          </mat-form-field>
-          <div class="button-container">
-            <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add step</button>
-            <button mat-button class="step-btn" (click)="delInput(i)">Delete</button>
-            <button mat-button class="step-btn" (click)="submit()">Submit</button>
-          </div>
-        </form>
-      </mat-step>
-    </mat-stepper>
-  </form>
-</div>
+  <div class="stepper-container" *ngIf="showStepper">
+    <h2>Add your own technique</h2>
+    <form [formGroup]="mainFormGroup">
+      <mat-stepper orientation="vertical" formArrayName="stepData" [selectedIndex]="currentStep">
+        <mat-step *ngFor="let stepForm of getStepDataControls(); let i = index" [stepControl]="stepForm">
+          <form [formGroup]="mainFormGroup" formGroupName="{{i}}">
+            <ng-template matStepLabel> {{ i + 1 }} Step</ng-template>
+            <mat-form-field class="step-ff">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Name"/>
+            </mat-form-field>
+            <mat-form-field class="step-ff">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="desc" placeholder="Description"/>
+            </mat-form-field>
+            <div class="button-container">
+              <button mat-button class="step-btn" matStepperNext (click)="addInput(i)">Add step</button>
+              <button mat-button class="step-btn" (click)="delInput(i)">Delete</button>
+              <button mat-button class="step-btn" (click)="submit()">Submit</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </div>
 
-<div class="stepper-container">
   <h2>Saved Techniques</h2>
   <mat-stepper class="custom-stepper" *ngFor="let technique of savedTechniques">
     <mat-step *ngFor="let step of technique.stepData">

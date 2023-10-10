@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {
+  LoginRegisterQuestionDialogComponent
+} from "./services/dialogs/loginRegisterQuestion/login-register-question/login-register-question-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bjjBible';
+  title: string = 'bjjBible';
+  isUserLogedIn: boolean = false;
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(LoginRegisterQuestionDialogComponent, {
+      width: '350px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      position: {right: '1%', top: '4%'}
+    });
+  }
 }
+

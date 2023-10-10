@@ -1,11 +1,17 @@
 <!-- nav -->
 <mat-toolbar color="primary">
-  <span><a mat-button routerLink="/positions" routerLinkActive="active_route">Positions</a></span>
-  <span><a mat-button routerLink="/techniques" routerLinkActive="active_route">Own Techniques</a></span>
-  <span><a mat-button routerLink="/competitors" routerLinkActive="active_route">Competitors</a></span>
+  <a mat-button routerLink="/positions" routerLinkActive="active_route">Positions</a>
+  <a *ngIf="isUserLogedIn" mat-button routerLink="/techniques" routerLinkActive="active_route">Own Techniques</a>
+  <a mat-button routerLink="/competitors" routerLinkActive="active_route">Competitors</a>
   <span class="toolbar-spacer"></span>
-  <span><a mat-button routerLink="/sources" routerLinkActive="active_route">Sources</a></span>
-  <span><a mat-button routerLink="/account" routerLinkActive="active_route">Account Settings</a></span>
+  <a mat-button routerLink="/sources" routerLinkActive="active_route">Sources</a>
+  <a *ngIf="isUserLogedIn" mat-button routerLink="/account" routerLinkActive="active_route">
+    Account Settings
+  </a>
+  <a *ngIf="!isUserLogedIn" mat-button (click)="openDialog('500ms', '350ms')"
+     routerLink="/login" routerLinkActive="active_route">
+    Login / Create account
+  </a>
 </mat-toolbar>
 
 <!-- main app container -->

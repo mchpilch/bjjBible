@@ -25,13 +25,17 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { CompetitorsComponent } from './pages/competitors/competitors.component';
+import {CompetitorsComponent} from './pages/competitors/competitors.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {
+  LoginRegisterQuestionDialogComponent
+} from './services/dialogs/loginRegisterQuestion/login-register-question/login-register-question-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -43,6 +47,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     SourcesComponent,
     PositionDetailsComponent,
     CompetitorsComponent,
+    LoginRegisterQuestionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     FormsModule,
     MatSliderModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
