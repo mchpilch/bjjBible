@@ -1,79 +1,87 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SnackbarService} from "../../../services/snackBar/snackbar.service";
 import {UserService} from "../../../services/user/user.service";
 import {User} from "../../../models/user";
+import {first} from "rxjs";
 
 
 @Component({
-    selector: 'app-login-register',
-    templateUrl: './login-register.component.html',
-    styleUrls: ['./login-register.component.css']
+  selector: 'app-login-register',
+  templateUrl: './login-register.component.html',
+  styleUrls: ['./login-register.component.css']
 })
 export class LoginRegisterComponent {
-    isLogin: boolean = false;
+  isLoginView: boolean = false;
 
-    formGroupRegister!: FormGroup;
-    formGroupLogin!: FormGroup;
+  formGroupRegister!: FormGroup;
+  formGroupLogin!: FormGroup;
 
-    firstname: any;
-    surname: any;
-    email: any;
-    password: any;
-    confirmPassword: any;
+  private user: User[];
 
-    loginValid: boolean;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private snackbarService: SnackbarService,
+    private userService: UserService
+  ) {
 
-    private user: User[];
+  }
 
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+      const action = params.get('action');
+      if (action === 'login' || action === 'register') {
+        this.isLoginView = action === 'login';
+      }
+    });
 
-    constructor(
-        private route: ActivatedRoute,
-        private formBuilder: FormBuilder,
-        private snackbarService: SnackbarService,
-        private userService: UserService
-    ) {
+    this.formGroupRegister = this.formBuilder.group({
+      firstname: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    });
 
+    this.formGroupLogin = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+
+    this.userService.getUsers().subscribe((data: User[]) => {
+        this.user = data;
+        console.log('data', data)
+      }
+    )
+
+    console.log('ngOnInit', this.user)
+  }
+
+  onSubmitRegister() {
+    if (this.formGroupRegister.invalid) {
+      console.log('form is invalid wHY?')
+      console.log(this.formGroupRegister.valid)
+      this.snackbarService.showMsg('Form is invalid - check fields again');
+      return;
     }
+    this.isLoginView = true;
+  }
 
-    ngOnInit(): void {
-        this.route.queryParamMap.subscribe(params => {
-            const action = params.get('action');
-            if (action === 'login' || action === 'register') {
-                this.isLogin = action === 'login';
-            }
-        });
+  onSubmitLogin() {
+    this.userService.register(this.formGroupRegister.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.snackbarService.showMsg('Registration successful');
+          this.router.navigate(['../../positions'], {relativeTo: this.route});
 
-        this.formGroupRegister = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            email: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-        });
-
-        this.formGroupLogin = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-        });
-
-        this.userService.getUsers().subscribe((data: User[]) => {
-                this.user = data;
-                console.log('data' ,data)
-            }
-        )
-
-        console.log('ngOnInit',this.user)
-    }
-
-    onSubmit() {
-        console.log('onSubmit')
-        if (this.formGroupRegister.invalid) {
-            console.log('form is invalid')
-            this.snackbarService.showMsg('Form is invalid - check fields again');
-            return;
+        },
+        error: error => {
+          this.snackbarService.showMsg(error);
         }
-
-    }
+      });
+  }
 }

@@ -4,16 +4,21 @@ import {Observable} from "rxjs";
 import {User} from "../../models/user";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class UserService {
-    private usersUrl = 'api/users';
+  private usersUrl = 'api/users';
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.usersUrl);
-    }
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.usersUrl);
+  }
+
+  register(user: User) {
+    console.log('about to register user',user)
+    return this.http.post(this.usersUrl, user);
+  }
 
 }
