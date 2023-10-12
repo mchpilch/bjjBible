@@ -1,91 +1,92 @@
 <div class="card-container">
+  <mat-card class="custom-card">
+    <!---- REGISTER ---->
+    <mat-card-content>
+      <form [formGroup]="formGroupRegister" *ngIf="!isLoginView">
+        <h2>Register</h2>
+        <!-- FIRSTNAME -->
+        <mat-form-field>
+          <input matInput placeholder="firstname" formControlName="firstname" required>
+          <mat-error>
+            Please provide your firstname
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- SURNAME -->
+        <mat-form-field>
+          <input matInput placeholder="surname" formControlName="surname" required>
+          <mat-error>
+            Please provide your surname
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- EMAIL -->
+        <mat-form-field>
+          <input matInput placeholder="email" formControlName="email" required>
+          <mat-error>
+            Please provide your email address
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- PASSWORD -->
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Password length must be > 5
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <!-- PASSWORD CONFIRM -->
+        <mat-form-field>
+          <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+          <mat-error *ngIf="formGroupRegister.hasError('mismatch')">
+            Passwords do not match
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmitRegister()"
+                [disabled]="!formGroupRegister.valid">
+          Save
+        </button>
+        <br>
+        <br>
+        <br>
+        <br>
+        <mat-hint>
+          I already have an account
+        </mat-hint>
+        <br>
+        <button mat-raised-button color="primary" (click)="isLoginView=true">
+          Go to login page
+        </button>
+      </form>
+    </mat-card-content>
     <!---- LOGIN ---->
-    <mat-card class="custom-card">
-        <mat-card-content>
-            <form  [formGroup]="formGroupLogin" *ngIf="isLoginView">
-                <h2>Log In</h2>
-                <mat-form-field>
-                    <!-- EMAIL -->
-                <input matInput placeholder="email" formControlName="email"  required>
-                    <mat-error>
-                        Please provide a valid email address
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <mat-form-field>
-                    <!-- PASSWORD -->
-                    <input matInput type="password" placeholder="Password"  formControlName="password"  name="password" required>
-                    <mat-error>
-                        Please provide a valid password
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <br>
-                <button mat-raised-button color="primary" [disabled]="!formGroupLogin.valid"
-                        (click)="onSubmitLogin()">Login
-                </button>
-            </form>
-        </mat-card-content>
-
-        <!---- REGISTER ---->
-        <mat-card-content>
-            <form [formGroup]="formGroupRegister" *ngIf="!isLoginView">
-                <h2>Register</h2>
-                <!-- FIRSTNAME -->
-                <mat-form-field>
-                    <input matInput placeholder="firstname" formControlName="firstname" required>
-                    <mat-error>
-                        Please provide your firstname
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <!-- SURNAME -->
-                <mat-form-field>
-                    <input matInput placeholder="surname"  formControlName="surname" required>
-                    <mat-error>
-                        Please provide your surname
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <!-- EMAIL -->
-                <mat-form-field>
-                    <input matInput placeholder="email" formControlName="email" required>
-                    <mat-error>
-                        Please provide your email address
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <!-- PASSWORD -->
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Password" formControlName="password" required>
-                    <mat-error>
-                        Password length must be > 5
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <!-- PASSWORD CONFIRM -->
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
-                    <mat-error>
-                        Please repeat password
-                    </mat-error>
-                </mat-form-field>
-                <br>
-                <button mat-raised-button color="primary" type="submit" (click)="onSubmitRegister()" [disabled]="!formGroupRegister.valid">
-                 Save
-                </button>
-                <br>
-                <br>
-                <br>
-                <br>
-                <mat-hint>
-                    I already have an account
-                </mat-hint>
-                <br>
-              <button mat-raised-button color="primary" (click)="isLoginView=true">
-              Go to login page
-              </button>
-            </form>
-        </mat-card-content>
-    </mat-card>
+    <mat-card-content>
+      <form [formGroup]="formGroupLogin" *ngIf="isLoginView">
+        <h2>Log In</h2>
+        <mat-form-field>
+          <!-- EMAIL -->
+          <input matInput placeholder="email" formControlName="email" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <!-- PASSWORD -->
+          <input matInput type="password" placeholder="Password" formControlName="password" name="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" [disabled]="!formGroupLogin.valid"
+                (click)="onSubmitLogin()">Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

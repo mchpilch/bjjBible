@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 
+
 class DialogAnimationsExampleDialog {
 }
 
@@ -13,16 +14,8 @@ class DialogAnimationsExampleDialog {
 export class LoginRegisterQuestionDialogComponent {
     constructor(
         public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>,
-        private router: Router
+        private router: Router,
     ) {
-    }
-
-    navigateLogin() {
-        this.navigateToLoginRegister('login');
-    }
-
-    navigateRegister() {
-        this.navigateToLoginRegister('register');
     }
 
     navigateToLoginRegister(action: string) {

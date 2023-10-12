@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SnackbarService} from "../../../services/snackBar/snackbar.service";
-import {UserService} from "../../../services/user/user.service";
-import {User} from "../../../models/user";
-import {first} from "rxjs";
+import {ValidationService} from "../../../services/validation/validation.service";
+import {MockDataService} from "../../../services/mockDb/mock-data.service";
 
 
 @Component({
@@ -18,70 +17,72 @@ export class LoginRegisterComponent {
   formGroupRegister!: FormGroup;
   formGroupLogin!: FormGroup;
 
-  private user: User[];
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
-    private userService: UserService
+    private mockDataService: MockDataService,
   ) {
-
-  }
-
-  ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
       const action = params.get('action');
       if (action === 'login' || action === 'register') {
         this.isLoginView = action === 'login';
       }
     });
+  }
 
+  ngOnInit(): void {
     this.formGroupRegister = this.formBuilder.group({
-      firstname: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-    });
+        firstname: ['', Validators.required],
+        surname: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]], //TODO: hint not working as expected issue //FIELD_KEY: [INITIAL_VALUE, [LIST_OF_VALIDATORS]]
+      },
+      {
+        validator: ValidationService.createEqualsValidator()
+      });
 
     this.formGroupLogin = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    this.userService.getUsers().subscribe((data: User[]) => {
-        this.user = data;
-        console.log('data', data)
-      }
-    )
-
-    console.log('ngOnInit', this.user)
   }
 
   onSubmitRegister() {
     if (this.formGroupRegister.invalid) {
-      console.log('form is invalid wHY?')
       console.log(this.formGroupRegister.valid)
       this.snackbarService.showMsg('Form is invalid - check fields again');
       return;
     }
+
+    this.mockDataService.addUser(this.formGroupRegister).subscribe(
+      (user) => {
+        this.snackbarService.showMsg('Registration successful');
+        console.log('User added:', user);
+        this.router.navigate(['../../positions'], {relativeTo: this.route});
+      }
+    );
     this.isLoginView = true;
   }
 
   onSubmitLogin() {
-    this.userService.register(this.formGroupRegister.value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.snackbarService.showMsg('Registration successful');
-          this.router.navigate(['../../positions'], {relativeTo: this.route});
+    this.mockDataService.checkUserCredentials(this.formGroupLogin).subscribe(
+      (user) => {
+        this.snackbarService.showMsg('Registration successful');
+        console.log('User authenticated:', user);
+        this.router.navigate(['../../positions'], {relativeTo: this.route});
+      }
+    );
 
-        },
-        error: error => {
-          this.snackbarService.showMsg(error);
-        }
-      });
+
+    console.log('ALL USERS FROM DB: ', this.mockDataService.getUsersAll());
+
+  }
+
+  clearAllFormControls() {
+    this.formGroupRegister.reset();
+    this.formGroupLogin.reset();
   }
 }
