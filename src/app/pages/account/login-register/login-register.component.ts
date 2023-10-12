@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SnackbarService} from "../../../services/snackBar/snackbar.service";
 import {ValidationService} from "../../../services/validation/validation.service";
 import {MockDataService} from "../../../services/mockDb/mock-data.service";
+import {User} from "../../../models/user";
 
 
 @Component({
@@ -38,7 +39,7 @@ export class LoginRegisterComponent {
         surname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required, Validators.minLength(6)]], //TODO: hint not working as expected issue //FIELD_KEY: [INITIAL_VALUE, [LIST_OF_VALIDATORS]]
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]], //TODO: hint not working as expected issue FIELD_KEY: [INITIAL_VALUE, [LIST_OF_VALIDATORS]]
       },
       {
         validator: ValidationService.createEqualsValidator()
@@ -58,10 +59,9 @@ export class LoginRegisterComponent {
     }
 
     this.mockDataService.addUser(this.formGroupRegister).subscribe(
-      (user) => {
+      (user: User) => {
         this.snackbarService.showMsg('Registration successful');
         console.log('User added:', user);
-        this.router.navigate(['../../positions'], {relativeTo: this.route});
       }
     );
     this.isLoginView = true;
@@ -70,9 +70,15 @@ export class LoginRegisterComponent {
   onSubmitLogin() {
     this.mockDataService.checkUserCredentials(this.formGroupLogin).subscribe(
       (user) => {
-        this.snackbarService.showMsg('Registration successful');
-        console.log('User authenticated:', user);
-        this.router.navigate(['../../positions'], {relativeTo: this.route});
+        if(user){
+          console.log('User authenticated:', user);
+          this.router.navigate(['../../positions'], {relativeTo: this.route});
+          this.snackbarService.showMsg('Login successful');
+        }
+        else{
+          console.log('onSubmitLogin-checkUserCredentials-', user);
+          this.snackbarService.showMsg('Wrong Credentials');
+        }
       }
     );
 
