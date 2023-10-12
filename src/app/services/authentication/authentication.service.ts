@@ -13,7 +13,4 @@ export class AuthenticationService {
   setUserLoggedIn(value: boolean) {
     this._userLoggedIn.next(value);
   }
-  getUserLoggedIn(): boolean {
-    return this._userLoggedIn.value;
-  }
 }
