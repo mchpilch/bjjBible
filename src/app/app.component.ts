@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {
     LoginRegisterQuestionDialogComponent
 } from "./services/dialogs/login-register-question/login-register-question-dialog.component";
+import {AuthenticationService} from "./services/authentication/authentication.service";
 
 @Component({
     selector: 'app-root',
@@ -13,7 +14,16 @@ export class AppComponent {
     title: string = 'bjjBible';
     userLoggedIn: boolean = false;
 
-    constructor(public dialog: MatDialog) {
+    constructor(
+        public dialog: MatDialog,
+        private authService: AuthenticationService
+    ) {
+    }
+
+    ngOnInit() {
+        this.authService.userLoggedIn$.subscribe((loggedIn) => {
+            this.userLoggedIn = loggedIn;
+        });
     }
 
     openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

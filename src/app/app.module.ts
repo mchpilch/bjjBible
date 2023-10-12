@@ -37,6 +37,7 @@ import {
 } from './services/dialogs/login-register-question/login-register-question-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginRegisterComponent} from './pages/account/login-register/login-register.component';
+import {AuthenticationService} from "./services/authentication/authentication.service";
 
 
 @NgModule({
@@ -79,7 +80,7 @@ import {LoginRegisterComponent} from './pages/account/login-register/login-regis
         MatFormFieldModule,
         MatDialogModule
     ],
-    providers: [],
+    providers: [AuthenticationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -10,7 +10,6 @@ export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {
   }
 
-  // Show a success snackbar
   showMsg(message: string): void {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
