@@ -12,7 +12,7 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import {TechniquesComponent} from './pages/techniques/techniques.component';
 import {AccountComponent} from './pages/account/account.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import {NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {MatListModule} from "@angular/material/list";
 import {SourcesComponent} from './pages/sources/sources.component';
 import {PositionDetailsComponent} from "./pages/position-details/position-details.component";
@@ -87,7 +87,8 @@ import {LogoutQuestionComponent} from './services/dialogs/logout-question/logout
         MatSelectModule,
         MatFormFieldModule,
         MatDialogModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        CommonModule
     ],
     providers: [AuthenticationService,
         {

@@ -1,5 +1,5 @@
 <!-- nav -->
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar-navbar-top">
     <a mat-button routerLink="/about-me" routerLinkActive="active_route">About me</a>
     <a mat-button routerLink="/positions" routerLinkActive="active_route">Positions</a>
     <a *ngIf="userLoggedIn" mat-button routerLink="/techniques" routerLinkActive="active_route">Own Techniques</a>
@@ -17,6 +17,19 @@
         Login / Create account
     </a>
 </mat-toolbar>
+
 <app-spinner></app-spinner>
-<!-- main app container -->
-<router-outlet></router-outlet>
+
+<router-outlet class="router-outlet"></router-outlet>
+
+<mat-toolbar color="primary" class="toolbar-footer">
+    <div class="footer-content">
+        <div>
+            Source Code: <a href="https://github.com/mchpilch/bjjBible">mchpilch/bjjBible</a>
+        </div>
+        <div>
+            Current Date:  {{ currentDate }}  Build Date: 2023-10-17
+        </div>
+    </div>
+</mat-toolbar>
+

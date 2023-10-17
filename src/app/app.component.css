@@ -6,3 +6,17 @@
   text-decoration: underline;
 }
 
+.router-outlet{
+  /*todo: think and style*/
+}
+
+.toolbar-footer{
+  position: fixed; /*todo: think and style*/
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer-content{
+ font-size: 13px;
+}
