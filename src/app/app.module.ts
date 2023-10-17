@@ -33,7 +33,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {
-  LoginRegisterQuestionDialogComponent
+    LoginRegisterQuestionDialogComponent
 } from './services/dialogs/login-register-question/login-register-question-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginRegisterComponent} from './pages/account/login-register/login-register.component';
@@ -41,60 +41,62 @@ import {AuthenticationService} from "./services/authentication/authentication.se
 import {SpinnerComponent} from './services/loader/spinner/spinner.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoaderInterceptor} from "./services/loader/interceptors/loader.interceptor";
-import { AboutMeComponent } from './pages/about-me/about-me.component';
+import {AboutMeComponent} from './pages/about-me/about-me.component';
+import {LogoutQuestionComponent} from './services/dialogs/logout-question/logout-question.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PositionsComponent,
-    TechniquesComponent,
-    AccountComponent,
-    SourcesComponent,
-    PositionDetailsComponent,
-    CompetitorsComponent,
-    LoginRegisterQuestionDialogComponent,
-    LoginRegisterComponent,
-    SpinnerComponent,
-    AboutMeComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    AppRoutingModule,
-    RouterOutlet,
-    RouterModule,
-    MatGridListModule,
-    NgOptimizedImage,
-    MatListModule,
-    InMemoryWebApiModule.forRoot(MockDataService),
-    HttpClientModule,
-    MatCardModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    FormsModule,
-    MatSliderModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    MatProgressSpinnerModule
-  ],
-  providers: [AuthenticationService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PositionsComponent,
+        TechniquesComponent,
+        AccountComponent,
+        SourcesComponent,
+        PositionDetailsComponent,
+        CompetitorsComponent,
+        LoginRegisterQuestionDialogComponent,
+        LoginRegisterComponent,
+        SpinnerComponent,
+        AboutMeComponent,
+        LogoutQuestionComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        AppRoutingModule,
+        RouterOutlet,
+        RouterModule,
+        MatGridListModule,
+        NgOptimizedImage,
+        MatListModule,
+        InMemoryWebApiModule.forRoot(MockDataService),
+        HttpClientModule,
+        MatCardModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        FormsModule,
+        MatSliderModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        MatProgressSpinnerModule
+    ],
+    providers: [AuthenticationService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoaderInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

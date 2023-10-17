@@ -4,6 +4,7 @@ import {
     LoginRegisterQuestionDialogComponent
 } from "./services/dialogs/login-register-question/login-register-question-dialog.component";
 import {AuthenticationService} from "./services/authentication/authentication.service";
+import {LogoutQuestionComponent} from "./services/dialogs/logout-question/logout-question.component";
 
 @Component({
     selector: 'app-root',
@@ -26,8 +27,17 @@ export class AppComponent {
         });
     }
 
-    openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    openDialogLoginRegister(enterAnimationDuration: string, exitAnimationDuration: string): void {
         this.dialog.open(LoginRegisterQuestionDialogComponent, {
+            width: '350px',
+            enterAnimationDuration,
+            exitAnimationDuration,
+            position: {right: '1%', top: '4%'}
+        });
+    }
+
+    openDialogLogOut(enterAnimationDuration: string, exitAnimationDuration: string): void {
+        this.dialog.open(LogoutQuestionComponent, {
             width: '350px',
             enterAnimationDuration,
             exitAnimationDuration,

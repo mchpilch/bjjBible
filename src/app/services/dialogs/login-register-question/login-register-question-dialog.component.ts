@@ -1,10 +1,5 @@
 import {Component} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-
-
-class DialogAnimationsExampleDialog {
-}
 
 @Component({
     selector: 'app-login-register-question',
@@ -13,7 +8,6 @@ class DialogAnimationsExampleDialog {
 })
 export class LoginRegisterQuestionDialogComponent {
     constructor(
-        public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>,
         private router: Router,
     ) {
     }

@@ -9,7 +9,10 @@
     <a *ngIf="userLoggedIn" mat-button routerLink="/account" routerLinkActive="active_route">
         Account Settings
     </a>
-    <a *ngIf="!userLoggedIn" mat-button (click)="openDialog('500ms', '350ms')"
+    <a *ngIf="userLoggedIn" mat-button (click)="openDialogLogOut('500ms', '350ms')" routerLinkActive="active_route">
+        Log out
+    </a>
+    <a *ngIf="!userLoggedIn" mat-button (click)="openDialogLoginRegister('500ms', '350ms')"
        routerLinkActive="active_route">
         Login / Create account
     </a>
