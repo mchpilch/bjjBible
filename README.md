@@ -1,6 +1,6 @@
 # Angular BJJ App - BjjBible - WORK IN PROGRESS ⏳⏳⏳
 
-![App Screenshot](src/assets/image/screen-shot.png)
+![App Screenshot](src/assets/image/screen-shot-table.PNG)
 
 ## Description
 The Angular BJJ app is a small project designed to showcase my Angular skills and introduce you to the world of Brazilian Jiu-Jitsu (BJJ). As an aspiring front end developer and a dedicated BJJ practitioner, I've merged these two aspects of life into one app.
