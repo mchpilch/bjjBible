@@ -15,11 +15,11 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {NgOptimizedImage} from "@angular/common";
 import {MatListModule} from "@angular/material/list";
 import {SourcesComponent} from './pages/sources/sources.component';
-import {PositionDetailsComponent} from "./pages/positionDetails/position-details.component";
+import {PositionDetailsComponent} from "./pages/position-details/position-details.component";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 
-import {MockDataService} from './services/mockDb/mock-data.service';
-import {HttpClientModule} from "@angular/common/http";
+import {MockDataService} from './services/mock-db/mock-data.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -33,55 +33,68 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {
-    LoginRegisterQuestionDialogComponent
+  LoginRegisterQuestionDialogComponent
 } from './services/dialogs/login-register-question/login-register-question-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LoginRegisterComponent} from './pages/account/login-register/login-register.component';
 import {AuthenticationService} from "./services/authentication/authentication.service";
+import {SpinnerComponent} from './services/loader/spinner/spinner.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {LoaderInterceptor} from "./services/loader/interceptors/loader.interceptor";
+import { AboutMeComponent } from './pages/about-me/about-me.component';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        PositionsComponent,
-        TechniquesComponent,
-        AccountComponent,
-        SourcesComponent,
-        PositionDetailsComponent,
-        CompetitorsComponent,
-        LoginRegisterQuestionDialogComponent,
-        LoginRegisterComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        AppRoutingModule,
-        RouterOutlet,
-        RouterModule,
-        MatGridListModule,
-        NgOptimizedImage,
-        MatListModule,
-        InMemoryWebApiModule.forRoot(MockDataService),
-        HttpClientModule,
-        MatCardModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        FormsModule,
-        MatSliderModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatDialogModule
-    ],
-    providers: [AuthenticationService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    PositionsComponent,
+    TechniquesComponent,
+    AccountComponent,
+    SourcesComponent,
+    PositionDetailsComponent,
+    CompetitorsComponent,
+    LoginRegisterQuestionDialogComponent,
+    LoginRegisterComponent,
+    SpinnerComponent,
+    AboutMeComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    AppRoutingModule,
+    RouterOutlet,
+    RouterModule,
+    MatGridListModule,
+    NgOptimizedImage,
+    MatListModule,
+    InMemoryWebApiModule.forRoot(MockDataService),
+    HttpClientModule,
+    MatCardModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

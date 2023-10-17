@@ -3,11 +3,11 @@ import { AuthenticationService } from '../authentication.service';
 import {inject} from "@angular/core";
 import {map} from "rxjs";
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = () => {
   const authenticationService = inject(AuthenticationService);
 
   return authenticationService.userLoggedIn$.pipe(
-    map((isUserLoggedIn) => {
+    map((isUserLoggedIn: boolean) => {
       if (isUserLoggedIn) {
         console.log('Zalogowany - możesz wejść');
         return true;

@@ -1,32 +1,23 @@
-# BjjBible - WORK IN PROGRESS ⏳⏳⏳
+# Angular BJJ App - BjjBible - WORK IN PROGRESS ⏳⏳⏳
 
+![App Screenshot](src/assets/image/screen-shot.png)
 
-## Idea - app about bjj where I experiment with Angular
+## Description
+The Angular BJJ app is a small project designed to showcase my Angular skills and introduce you to the world of Brazilian Jiu-Jitsu (BJJ). As an aspiring front end developer and a dedicated BJJ practitioner, I've merged these two aspects of life into one app.
 
+## Sections
 
+- **About Me**: Basic information about me
+- **Positions**: Introduction to 6 basic positions in the sport of Brazilian Jiu-Jitsu.
+- **Own Techniques**: Available for logged-in users. You can create your own sequences of moves in form of stepper/list to help you remember the order, purpose and details of every move.
+- **Competitors**: Table which contains random generated data which you can filter accordingly to your needs.
+- **Sources**: Links to the sites I used to make this app. 
+- **Account Settings**: Your account settings where you can personalise your experience
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+## Contact
 
-## Development server
+- Email: mchpilch@gmail.com
+- GitHub: [github.com/mchpilch](https://github.com/mchpilch)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Keep on rolling!
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

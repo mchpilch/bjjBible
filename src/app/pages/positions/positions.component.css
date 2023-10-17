@@ -15,4 +15,5 @@ mat-grid-tile {
   max-height: 500px;
   max-width: 500px;
   margin: auto;
+  cursor: pointer;
 }

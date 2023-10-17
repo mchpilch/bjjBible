@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SnackbarService} from "../../services/snackBar/snackbar.service";
+import {SnackbarService} from "../../services/snack-bar/snackbar.service";
 import {Technique} from "../../models/technique";
 
 const mockTechniques: Technique[] = [

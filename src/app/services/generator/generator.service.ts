@@ -20,7 +20,19 @@ export class GeneratorService {
 
   generateCompetitors(n: number): Competitor[] {
     const competitors: Competitor[] = [];
-    for (let i = 1; i <= n; i++) {
+
+    const me: Competitor = {
+      id: 1,
+      name: 'Michał',
+      surname: 'Pilch',
+      nickname: 'Pilchu',
+      weight: 72,
+      team: 'Unity Kraków',
+      belt: 'white ⚪',
+    };
+
+    competitors.push(me)
+    for (let i = 2; i <= n; i++) {
       competitors.push(this.createNewCompetitor(i));
     }
     return competitors;
@@ -29,7 +41,7 @@ export class GeneratorService {
 
   randomBelt(): string {
     var weights: number[] = [0.45, 0.2, 0.15, 0.1, 0.1];
-    var results = ['white', 'blue', 'purple', 'brown', 'black'];  // ⚪🔵🟣🟤⚫
+    var results: string[] = ['white ⚪', 'blue 🔵', 'purple 🟣', 'brown 🟤', 'black ⚫'];  // ⚪🔵🟣🟤⚫
 
     var num: number = Math.random(),
       s: number = 0,

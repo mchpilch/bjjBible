@@ -1,5 +1,6 @@
 <!-- nav -->
 <mat-toolbar color="primary">
+    <a mat-button routerLink="/about-me" routerLinkActive="active_route">About me</a>
     <a mat-button routerLink="/positions" routerLinkActive="active_route">Positions</a>
     <a *ngIf="userLoggedIn" mat-button routerLink="/techniques" routerLinkActive="active_route">Own Techniques</a>
     <a mat-button routerLink="/competitors" routerLinkActive="active_route">Competitors</a>
@@ -13,6 +14,6 @@
         Login / Create account
     </a>
 </mat-toolbar>
-
+<app-spinner></app-spinner>
 <!-- main app container -->
 <router-outlet></router-outlet>

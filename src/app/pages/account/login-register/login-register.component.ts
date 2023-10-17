@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SnackbarService} from "../../../services/snackBar/snackbar.service";
+import {SnackbarService} from "../../../services/snack-bar/snackbar.service";
 import {ValidationService} from "../../../services/validation/validation.service";
-import {MockDataService} from "../../../services/mockDb/mock-data.service";
+import {MockDataService} from "../../../services/mock-db/mock-data.service";
 import {User} from "../../../models/user";
 import {AuthenticationService} from "../../../services/authentication/authentication.service";
 
