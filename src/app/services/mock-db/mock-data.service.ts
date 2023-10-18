@@ -31,7 +31,17 @@ export class MockDataService implements InMemoryDbService {
         description: 'Description knee-on-belly',
         image: this.IMG_PATH_POSITIONS + 'position-knee-on-belly.png'
       },
-      {id: 4, title: 'mount', description: 'Description mount', image: this.IMG_PATH_POSITIONS + 'position-mount.png'},
+      {
+        id: 4, title: 'mount',
+        description: 'The mount position in BJJ is when a practitioner is sitting on top of their opponent\'s chest, ' +
+          'securing control over them. In IBJJF competitions, the mount position can earn the practitioner 4 points. ' +
+          'From the mount position, the top practitioner has several submission opportunities, including armlocks (armbar), ' +
+          'chokes, and collar strangles. The practitioner on the bottom is vulnerable to these attacks and must defend effectively. ' +
+          'To maintain the mount in accordance with IBJJF rules, the top practitioner should focus on distributing their weight evenly, ' +
+          'staying low, and preventing the opponent from bridging or escaping. They can also work on setting up submissions while maintaining control. ' +
+          'The practitioner on the bottom should aim to bridge and escape or use defensive techniques to avoid getting submitted.'
+        , image: this.IMG_PATH_POSITIONS + 'position-mount.png'
+      },
       {
         id: 5,
         title: 'side-control',
