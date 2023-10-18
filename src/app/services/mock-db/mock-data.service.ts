@@ -22,14 +22,14 @@ export class MockDataService implements InMemoryDbService {
         id: 1,
         title: 'back-control',
         description: 'Description back-control',
-        image: this.IMG_PATH_POSITIONS + 'position-back-control.png'
+        image: this.IMG_PATH_POSITIONS + 'position-jt-back.png'
       },
-      {id: 2, title: 'guard', description: 'Description guard', image: this.IMG_PATH_POSITIONS + 'position-guard.png'},
+      {id: 2, title: 'guard', description: 'Description guard', image: this.IMG_PATH_POSITIONS + 'position-jt-guard.png'},
       {
         id: 3,
         title: 'knee-on-belly',
         description: 'Description knee-on-belly',
-        image: this.IMG_PATH_POSITIONS + 'position-knee-on-belly.png'
+        image: this.IMG_PATH_POSITIONS + 'position-jt-knee.png'
       },
       {
         id: 4, title: 'mount',
@@ -40,19 +40,19 @@ export class MockDataService implements InMemoryDbService {
           'To maintain the mount in accordance with IBJJF rules, the top practitioner should focus on distributing their weight evenly, ' +
           'staying low, and preventing the opponent from bridging or escaping. They can also work on setting up submissions while maintaining control. ' +
           'The practitioner on the bottom should aim to bridge and escape or use defensive techniques to avoid getting submitted.'
-        , image: this.IMG_PATH_POSITIONS + 'position-mount.png'
+        , image: this.IMG_PATH_POSITIONS + 'position-jt-mount.png'
       },
       {
         id: 5,
         title: 'side-control',
         description: 'Description side-control',
-        image: this.IMG_PATH_POSITIONS + 'position-side-control.png'
+        image: this.IMG_PATH_POSITIONS + 'position-jt-side.png'
       },
       {
         id: 6,
         title: 'turtle',
         description: 'Description turtle',
-        image: this.IMG_PATH_POSITIONS + 'position-turtle.png'
+        image: this.IMG_PATH_POSITIONS + 'position-jt-turtle.png'
       },
     ];
     const techniques = [

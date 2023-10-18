@@ -14,7 +14,7 @@ import {DatePipe} from "@angular/common";
     providers: [DatePipe]
 })
 export class AppComponent {
-    title: string = 'bjjBible';
+    title: string = 'Portfolio Michał Pilch';
     userLoggedIn: boolean = false;
     currentDate: any;
 
