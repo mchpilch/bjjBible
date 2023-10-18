@@ -1,6 +1,6 @@
 # Angular BJJ App - BjjBible - WORK IN PROGRESS ⏳⏳⏳
 
-You can see latest deployment here -> https://mchpilch.github.io/about-me
+You can see latest deployment here -> https://mchpilch.github.io
 
 ![App Screenshot](src/assets/image/screen-shot-table.PNG)
 
