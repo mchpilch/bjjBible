@@ -28,7 +28,7 @@ export class GeneratorService {
       nickname: 'Pilchu',
       weight: 72,
       team: 'Unity Kraków',
-      belt: 'white ⚪',
+      belt: '⚪ white',
     };
 
     competitors.push(me)
@@ -41,7 +41,7 @@ export class GeneratorService {
 
   randomBelt(): string {
     var weights: number[] = [0.45, 0.2, 0.15, 0.1, 0.1];
-    var results: string[] = ['white ⚪', 'blue 🔵', 'purple 🟣', 'brown 🟤', 'black ⚫'];  // ⚪🔵🟣🟤⚫
+    var results: string[] = ['⚪ white', '🔵 blue', ' 🟣 purple', '  🟤 brown', ' ⚫ black'];  // ⚪🔵🟣🟤⚫
 
     var num: number = Math.random(),
       s: number = 0,

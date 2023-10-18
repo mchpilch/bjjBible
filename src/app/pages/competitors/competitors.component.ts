@@ -18,7 +18,7 @@ export class CompetitorsComponent {
   competitor: Competitor[] = [];
   displayedColumns: string[] = ['name', 'surname', 'nickname', 'team', 'weight', 'belt'];
   columnsWithRegularFilter: string[] = ['name', 'surname', 'nickname', 'team'];
-  customBeltsOrder: string[] = ['', 'black', 'brown', 'purple', 'blue', 'white'];
+  customBeltsOrder: string[] = ['', '⚫ black', '🟤 brown', '🟣 purple', '🔵 blue', '⚪ white'];
   sliderValueCurMin: number = 50;
   sliderValueCurMax: number = 150;
 

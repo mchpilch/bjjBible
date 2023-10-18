@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AboutMeComponent {
 
+  download():void {
+    let link = document.createElement("a");
+    link.download = "Michal_Pilch_CV.pdf";
+    link.href = "/assets/pdf/Michal_Pilch_CV.pdf";
+    link.click();
+  }
 }

@@ -1,0 +1,30 @@
+.container {
+  text-align: center;
+  margin-left:  150px;
+  margin-right: 150px;
+}
+
+.intro{
+  margin-top: 100px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+.basic-info{
+  font-family: sans-serif;
+  margin-top: 40px;
+}
+
+.section{
+  margin-top: 40px;
+}
+
+.download-btn {
+  margin-top: 100px;
+}

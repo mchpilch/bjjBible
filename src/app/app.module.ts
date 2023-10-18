@@ -43,6 +43,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {LoaderInterceptor} from "./services/loader/interceptors/loader.interceptor";
 import {AboutMeComponent} from './pages/about-me/about-me.component';
 import {LogoutQuestionComponent} from './services/dialogs/logout-question/logout-question.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import {LogoutQuestionComponent} from './services/dialogs/logout-question/logout
         MatFormFieldModule,
         MatDialogModule,
         MatProgressSpinnerModule,
-        CommonModule
+        CommonModule,
+        FlexLayoutModule
     ],
     providers: [AuthenticationService,
         {

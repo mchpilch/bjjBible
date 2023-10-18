@@ -20,16 +20,18 @@
 
 <app-spinner></app-spinner>
 
-<router-outlet class="router-outlet"></router-outlet>
+<div class="router-outlet-content">
+  <router-outlet></router-outlet>
+</div>
 
 <mat-toolbar color="primary" class="toolbar-footer">
-    <div class="footer-content">
-        <div>
-            Source Code: <a href="https://github.com/mchpilch/bjjBible">mchpilch/bjjBible</a>
-        </div>
-        <div>
-            Current Date:  {{ currentDate }}  Build Date: 2023-10-17
-        </div>
-    </div>
+  <div class="center-content">
+    <span> &nbsp;  Source Code: &nbsp; </span>
+    <a href="https://github.com/mchpilch/bjjBible" style="color: yellow">mchpilch/bjjBible</a>
+    <span class="toolbar-spacer"></span>
+    <span> &nbsp; Current Date: &nbsp; </span>
+    {{ currentDate }}
+    <span> &nbsp; Build Date: 2023-10-18 &nbsp; </span>
+  </div>
 </mat-toolbar>
 
